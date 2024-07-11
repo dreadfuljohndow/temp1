@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MonkeyDo.WinApp.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:treeView="clr-namespace:MonkeyDo.WinApp.ViewModels.TreeView"
+             mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="450"
+             x:Class="MonkeyDo.WinApp.Views.AddItemView"
+             x:DataType="treeView:AddItemViewModel">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Command="{Binding CancelCommand}">Cancel</Button>
+        <Button DockPanel.Dock="Bottom"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Command="{Binding OkCommand}">OK</Button>
+        <StackPanel>
+            <Grid ColumnDefinitions="1*, 2*" RowDefinitions="Auto, Auto" RowSpan="10"  Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">what needs to be done? - </Label>
+                <TextBox Grid.Column="1" Grid.Row="0" AcceptsReturn="True"
+                         Text="{Binding Description}"
+                         Watermark="Enter your to do item"/>
+                <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">to finish what project? - </Label>
+                <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" MaxDropDownHeight="300" ItemsSource="{Binding Projects}" SelectedItem="{Binding AssignedProject}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}"></Label>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MonkeyDo.WinApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:views="clr-namespace:MonkeyDo.WinApp.Views"
+        x:Class="MonkeyDo.WinApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/Meditation-Monkey-Logo-1024x1024.ico"
+        Title="MonkeyDo.WinApp">
+
+    <DockPanel VerticalAlignment="Stretch" LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <Separator/>
+                <MenuItem Header="Exit" Command="{Binding AppExit}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Settings">
+                <MenuItem Header="Update Azure Items" Command="{Binding UpdateItems}"></MenuItem>
+                <MenuItem Header="_Configure Task Sources" Command="{Binding ShowConfigureTaskSourceView}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_View Help"></MenuItem>
+                <MenuItem Header="_About Monkey Do" Command="{Binding ShowAboutInfo}"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+    <ContentControl Background="LightGray" Content="{Binding ContentViewModel}">
+    </ContentControl>
+
+    </DockPanel>
+
+</Window>

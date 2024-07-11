@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MonkeyDo.WinApp.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:treeView="clr-namespace:MonkeyDo.WinApp.ViewModels.TreeView"
+             mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="450"
+             x:Class="MonkeyDo.WinApp.Views.AddProjectView"
+             x:DataType="treeView:AddProjectViewModel">
+    <DockPanel VerticalAlignment="Stretch">
+        <Button DockPanel.Dock="Bottom"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Command="{Binding CancelCommand}">Cancel</Button>
+        <Button DockPanel.Dock="Bottom"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Command="{Binding OkCommand}">OK</Button>
+        <StackPanel>
+            <Grid ColumnDefinitions="1*, 2*" RowDefinitions="Auto, Auto" RowSpan="10"  Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Project Name:</Label>
+                <TextBox Grid.Column="1" Grid.Row="0" AcceptsReturn="True"
+                         Text="{Binding Name}"
+                         Watermark="Enter your to do item"/>
+                <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Project Description:</Label>
+                <TextBox Grid.Column="1" Grid.Row="1" AcceptsReturn="True"
+                         Text="{Binding Description}"
+                         Watermark="Enter your to do item"/>
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

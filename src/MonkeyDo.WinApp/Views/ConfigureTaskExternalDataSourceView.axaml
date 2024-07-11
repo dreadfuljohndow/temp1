@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MonkeyDo.WinApp.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:dd="clr-namespace:MonkeyDo.WinApp;assembly=MyAssembly"
+             xmlns:designData="clr-namespace:MonkeyDo.WinApp.ViewModels.DesignData"
+             d:DataContext="{x:Static designData:DesignData.ExampleConfigureTaskExternalDataSourceViewModel}"
+             x:Class="MonkeyDo.WinApp.Views.ConfigureTaskExternalDataSourceView"
+             x:DataType="vm:ConfigureTaskExternalDataSourceViewModel">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"> Save</Button>
+        <ItemsControl ItemsSource="{Binding ConfigItems}" Background="#E7FBFF">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="10" BorderBrush="LightGray">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Color="Black"
+                                Opacity="0.4" ></DropShadowEffect>
+                        </Border.Effect>
+                        <Grid ColumnDefinitions="30,300,300" RowDefinitions="Auto,Auto,Auto"  Margin="10" Background="LightGray">
+                            <StackPanel Orientation="Vertical"  Grid.Column="1">
+                                <StackPanel>
+                                    <Label>Source type - Azure Source</Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="15">Source Label</Label>
+                                    <TextBox Margin="10" Width="250" Watermark="Source Label" Text="{Binding SourceName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="15">Organization Name</Label>
+                                    <TextBox Margin="10" Width="250" Watermark="Organization Name" Text="{Binding OrganizationName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="15">Project Name</Label>
+                                    <TextBox Margin="10" Width="250" Watermark="Project Name" Text="{Binding ProjectName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="15">Pat</Label>
+                                    <TextBox Margin="10" Width="250" Watermark="PAT" Text="{Binding PAT}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DockPanel>
+</UserControl>

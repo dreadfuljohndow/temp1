@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="200"
+        Height="200"
+        Width="450"
+        CanResize="False"
+        x:Class="MonkeyDo.WinApp.Views.AboutDialogWindow"
+        Title="About Application">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label>Version: 0.0.0</Label>
+        <Label>Created: 2024/01/01</Label>
+    </StackPanel>
+
+</Window>

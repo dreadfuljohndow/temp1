@@ -1,0 +1,13 @@
+MonkeyDo.WinApp/bin/
+MonkeyDo.WinApp/obj/
+.vs/
+src/MonkeyDo.WinApp/obj/
+src/MonkeyDo.WinApp/bin/
+libs/Md.AzureDevOps.DataProvider/obj/
+libs/Md.LocalStorage.Abstractions/obj/
+libs/Md.LocalStorage.Abstractions/bin/
+libs/Md.LocalStorage.EfCoreMsSqlProvider/obj/
+libs/Md.LocalStorage.MsSqlProvider/obj/
+libs/Md.AzureDevOps.DataProvider/bin/
+libs/Md.LocalStorage.MsSqlProvider/bin/
+libs/Md.LocalStorage.EfCoreMsSqlProvider/bin/

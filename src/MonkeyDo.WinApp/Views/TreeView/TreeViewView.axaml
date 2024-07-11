@@ -1,0 +1,81 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MonkeyDo.WinApp.Views.TreeView.TreeViewView"
+             xmlns:viewModels="clr-namespace:MonkeyDo.WinApp.ViewModels"
+             xmlns:treeView="clr-namespace:MonkeyDo.WinApp.ViewModels.TreeView"
+             xmlns:designData="clr-namespace:MonkeyDo.WinApp.ViewModels.DesignData"
+             d:DataContext="{x:Static designData:DesignData.ExampleToDoListViewModel}"
+             x:DataType="treeView:TreeViewViewModel">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                x:CompileBindings="False"
+                Command="{Binding $parent[Window].((treeView:TreeViewToDoListViewModel)DataContext).CreateProject}">
+            Add project
+        </Button>
+        <Button DockPanel.Dock="Bottom"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                x:CompileBindings="False"
+                Command="{Binding Do}"
+                HotKey="Ctrl+N">
+            Add item
+        </Button>
+        <ScrollViewer DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ItemsControl ItemsSource="{Binding ProjectItems}" Background="#E7FBFF">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Expander VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch">
+                            <Expander.Header>
+                                <Grid ColumnDefinitions="80*, 150" RowDefinitions="*">
+                                    <Label HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="0" Content="{Binding Name}"></Label>
+                                    <Label HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="0" Margin="200,0,0,0"  Content="{Binding Description}"></Label>
+                                    <DockPanel Grid.Column="1" HorizontalAlignment="Right">
+                                        <Button DockPanel.Dock="Right" Margin="0,0,5,0" Command="{Binding $parent[Window].((treeView:TreeViewToDoListViewModel)DataContext).EditItem}"  CommandParameter="Hello World">Edit</Button>
+                                        <Button DockPanel.Dock="Right" Margin="0,0,5,0">Delete</Button>
+                                    </DockPanel>
+                                </Grid>
+                            </Expander.Header>
+                            <ItemsControl ItemsSource="{Binding ListItems}" Background="#E7FBFF">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" BorderBrush="LightGray">
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="10" Color="Black" Opacity="0.4" ></DropShadowEffect>
+                                            </Border.Effect>
+                                            <DockPanel>
+                                                <Grid ColumnDefinitions="30,300,300,50" RowDefinitions="Auto,Auto,Auto"  Margin="10" Background="LightGray">
+
+                                                    <StackPanel Orientation="Horizontal"  Grid.Column="0">
+
+                                                        <Panel Background="{Binding  BackColorString}" Margin="0" Width="2" />
+                                                        <CheckBox Margin="10 4 10 4" IsChecked="{Binding IsChecked}" Command="{Binding  Checked }"/>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="1">
+                                                        <StackPanel Orientation="Vertical">
+                                                            <Label Margin="10 4 4 4" FontSize="15" Content="{Binding Description}"/>
+                                                            <Label Margin="15 2 2 2" FontSize="10" Content="{Binding AddedDateTime}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+
+                                                    <Label Margin="10"  Grid.Column="2" Content="{Binding Description}"/>
+                                                    <!--<Button Grid.Column="3" Command="{Binding $parent[Window].((treeView:TreeViewToDoListViewModel)DataContext).EditItem }">Edit</Button>-->
+                                                    <Button Grid.Column="3" Command="{Binding $parent[Window].((treeView:TreeViewViewModel)DataContext).EditItem}" CommandParameter="Hello World">Edit</Button>
+                                                </Grid>
+                                            </DockPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Expander>
+                        <!--<Expander></Expander>-->
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
